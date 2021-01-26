@@ -18,6 +18,8 @@
 #include "modules/rangeproof/pedersen.h"
 #include "modules/rangeproof/borromean.h"
 
+#include <stdio.h>
+
 SECP256K1_INLINE static void secp256k1_rangeproof_pub_expand(secp256k1_gej *pubs,
  int exp, size_t *rsizes, size_t rings, const secp256k1_ge* genp) {
     secp256k1_gej base;
@@ -542,6 +544,7 @@ SECP256K1_INLINE static int secp256k1_rangeproof_verify_impl(const secp256k1_ecm
  const secp256k1_ecmult_gen_context* ecmult_gen_ctx,
  unsigned char *blindout, uint64_t *value_out, unsigned char *message_out, size_t *outlen, const unsigned char *nonce,
  uint64_t *min_value, uint64_t *max_value, const secp256k1_ge *commit, const unsigned char *proof, size_t plen, const unsigned char *extra_commit, size_t extra_commit_len, const secp256k1_ge* genp) {
+    printf("entering secp256k1_rangeproof_verify_impl\n");
     secp256k1_gej accj;
     secp256k1_gej pubs[128];
     secp256k1_ge c;

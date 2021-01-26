@@ -13,6 +13,8 @@
 #include "modules/rangeproof/borromean_impl.h"
 #include "modules/rangeproof/rangeproof_impl.h"
 
+#include <stdio.h>
+
 /** Alternative generator for secp256k1.
  *  This is the sha256 of 'g' after standard encoding (without compression),
  *  which happens to be a point on the curve. More precisely, the generator is
@@ -240,6 +242,7 @@ int secp256k1_rangeproof_rewind(const secp256k1_context* ctx,
  const secp256k1_pedersen_commitment *commit, const unsigned char *proof, size_t plen, const unsigned char *extra_commit, size_t extra_commit_len, const secp256k1_generator* gen) {
     secp256k1_ge commitp;
     secp256k1_ge genp;
+    printf("entering secp256k1_rangeproof_verify_impl\n");
     VERIFY_CHECK(ctx != NULL);
     ARG_CHECK(commit != NULL);
     ARG_CHECK(proof != NULL);

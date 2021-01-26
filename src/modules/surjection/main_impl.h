@@ -8,6 +8,7 @@
 
 #include <assert.h>
 #include <string.h>
+#include <stdio.h>
 
 #if defined HAVE_CONFIG_H
 #include "libsecp256k1-config.h"
@@ -229,6 +230,7 @@ int secp256k1_surjectionproof_initialize(const secp256k1_context* ctx, secp256k1
     ARG_CHECK(n_input_tags_to_use <= n_input_tags);
     (void) ctx;
 
+    printf("passed checks in secp256k1_surjectionproof_initialize\n");
     secp256k1_surjectionproof_csprng_init(&csprng, random_seed32);
     memset(proof->data, 0, sizeof(proof->data));
     proof->n_inputs = n_input_tags;
@@ -257,6 +259,7 @@ int secp256k1_surjectionproof_initialize(const secp256k1_context* ctx, secp256k1
 
         /* Check if we succeeded */
         n_iterations++;
+        printf("n_iterations is %zu\n", n_iterations);
         if (has_output_tag) {
 #ifdef VERIFY
             proof->initialized = 1;
